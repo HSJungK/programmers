@@ -1,0 +1,29 @@
+package hash.seok;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Camouflage {
+	
+	public int solution(String[][] clothes) {
+        int answer = 1;
+        
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        
+        for (String[] cloth: clothes) {
+            if (map.containsKey(cloth[1]))
+            	map.replace(cloth[1], map.get(cloth[1])+1);
+            else
+            	map.put(cloth[1], 1);
+        }
+        
+        
+        for (Integer value : map.values()) {
+            answer*=(value+1);
+        }
+        answer-=1;
+        
+        return answer;
+    }
+
+}
